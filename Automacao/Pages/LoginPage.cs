@@ -11,29 +11,69 @@ namespace Pages
             _page = page;
         }
 
-        // Locators
-        private ILocator UsuarioInput => _page.Locator("xpath=//input[@name='loginKey']");
-        private ILocator SenhaInput => _page.Locator("xpath=//input[@name='password']");
-        private ILocator LoginButton => _page.Locator("xpath=//div[@id='main']/div/div[2]/div/div[2]/div/div/div/div[2]/div/div[2]/form/button");
-        private ILocator HomeTitle => _page.Locator("h1");
+        // =========================
+        // Variáveis
+        // =========================
+        public string NomeUsuario { get; private set; }
 
+        // =========================
+        // LOCATORS - LOGIN
+        // =========================
+        private ILocator UsuarioInput =>
+            _page.Locator("#Usuarios");
+
+        private ILocator SenhaInput =>
+            _page.Locator("#SenhaAcesso");
+
+        private ILocator LoginButton =>
+            _page.GetByRole(AriaRole.Button, new() { Name = "Entrar" });
+
+        // =========================
+        // LOCATORS - HOME (IFRAME)
+        // =========================
+        private IFrameLocator HomeFrame =>
+            _page.FrameLocator("iframe");
+
+        private ILocator HomeTitle =>
+            HomeFrame.Locator(".tela-inicial-saudacao");
+
+        // =========================
+        // AÇÕES
+        // =========================
         public async Task Navigate()
         {
-            await _page.GotoAsync("https://shopee.com.br/buyer/login?next=https%3A%2F%2Fshopee.com.br%2F");
+            await _page.GotoAsync(
+                "https://regular.escolarmanageronline.com.br/escolateste"
+            );
         }
 
         public async Task RealizarLogin(string usuario, string senha)
         {
-            await UsuarioInput.FillAsync(usuario);
-            await _page.WaitForTimeoutAsync(1000);
+            NomeUsuario = usuario;
+
+            await UsuarioInput.SelectOptionAsync(
+                new SelectOptionValue { Label = usuario }
+            );
+
             await SenhaInput.FillAsync(senha);
-            await _page.WaitForTimeoutAsync(1000);
+
             await LoginButton.ClickAsync();
         }
 
+        // =========================
+        // VALIDAÇÃO
+        // =========================
         public async Task ValidarLoginComSucesso()
         {
-            await Assertions.Expect(HomeTitle).ToHaveTextAsync("Home");
+            // Aguarda a saudação aparecer dentro do iframe
+            await Assertions.Expect(HomeTitle)
+                .ToBeVisibleAsync(new() { Timeout = 20000 });
+
+            // Valida apenas o nome (mais robusto)
+            await Assertions.Expect(HomeTitle)
+                .ToContainTextAsync(NomeUsuario);
+
+            await _page.WaitForTimeoutAsync(1000);
         }
     }
 }

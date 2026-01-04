@@ -26,6 +26,6 @@ public class LoginSteps
     [Then(@"devo ver a página inicial")]
     public async Task ThenDevoVerAPaginaInicial()
     {
-       
+        await _loginPage.ValidarLoginComSucesso();
     }
 }

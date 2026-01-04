@@ -94,7 +94,7 @@ namespace Automacao.Features
     testRunner.Given("que estou na página de login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 5
-    testRunner.When("informo usuário \'admin\' e senha \'123456\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("informo usuário \'HUGO QA\' e senha \'TeraByte@123\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 6
     testRunner.Then("devo ver a página inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
