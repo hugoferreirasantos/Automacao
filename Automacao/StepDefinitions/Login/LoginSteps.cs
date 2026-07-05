@@ -1,5 +1,5 @@
 using TechTalk.SpecFlow;
-using Pages;
+using Automacao.Pages.Login;
 
 [Binding]
 public class LoginSteps

@@ -1,7 +1,7 @@
 using Automacao.Pages.ConfigPages;
 using Microsoft.Playwright;
 
-namespace Pages
+namespace Automacao.Pages.Login
 {
     public class LoginPage : BasePage
     {

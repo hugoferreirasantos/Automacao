@@ -1,8 +1,8 @@
 using TechTalk.SpecFlow;
-using Automacao.Pages;
-using Pages;
+using Automacao.Pages.Login;
+using Automacao.Pages.Academico.Alunos.FichaAluno;
 
-namespace Automacao.StepDefinitions
+namespace Automacao.StepDefinitions.Academico.Alunos.FichaAluno
 {
     [Binding]
     public class CadastroFichaAlunoStepDefinition

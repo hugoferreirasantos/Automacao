@@ -1,7 +1,7 @@
 using Automacao.Pages.ConfigPages;
 using Microsoft.Playwright;
 
-namespace Automacao.Pages
+namespace Automacao.Pages.Academico.Alunos.FichaAluno
 {
     public class CadastroFichaAlunoPO : BasePage
     {
