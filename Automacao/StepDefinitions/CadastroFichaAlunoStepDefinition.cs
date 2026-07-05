@@ -10,8 +10,8 @@ namespace Automacao.StepDefinitions
         private readonly CadastroFichaAlunoPO _cadastroFichaAlunoPO;
         private readonly LoginPage _login;
         public CadastroFichaAlunoStepDefinition(
-    CadastroFichaAlunoPO cadastroFichaAlunoPO,
-    LoginPage login)
+        CadastroFichaAlunoPO cadastroFichaAlunoPO,
+        LoginPage login)
         {
             _cadastroFichaAlunoPO = cadastroFichaAlunoPO;
             _login = login;
@@ -21,7 +21,7 @@ namespace Automacao.StepDefinitions
         [Scope(Tag = "FichaDoAluno")]
         public async Task GivenQueDesejoCadastrarAFichaDoAluno()
         {
-            await _login.Navigate();
+            await _login.NavegarAsync();
         }
 
         [Given("acesso o sistema utilizando operador '([^']*)'")]
@@ -30,7 +30,7 @@ namespace Automacao.StepDefinitions
         {
             var password = Automacao.Config.AppConfigManager.Settings.DefaultPassword;
             await _login.RealizarLogin(nomeOperador, password);
-            await _cadastroFichaAlunoPO.Navegue();
+            await _cadastroFichaAlunoPO.NavegarAsync();
         }
 
 

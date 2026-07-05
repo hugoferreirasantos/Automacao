@@ -1,14 +1,15 @@
+using Automacao.Pages.ConfigPages;
 using Microsoft.Playwright;
 
 namespace Pages
 {
-    public class LoginPage
+    public class LoginPage : BasePage
     {
-        private readonly IPage _page;
+        // Esta é a página inicial, então o caminho é vazio
+        protected override string PagePath => "";
 
-        public LoginPage(IPage page)
+        public LoginPage(IPage page) : base(page)
         {
-            _page = page;
         }
 
         // =========================
@@ -40,12 +41,6 @@ namespace Pages
         // =========================
         // AÇÕES
         // =========================
-        public async Task Navigate()
-        {
-            var baseUrl = Automacao.Config.AppConfigManager.Settings.BaseUrl;
-            await _page.GotoAsync(baseUrl);
-        }
-
         public async Task RealizarLogin(string usuario, string senha)
         {
             NomeUsuario = usuario;

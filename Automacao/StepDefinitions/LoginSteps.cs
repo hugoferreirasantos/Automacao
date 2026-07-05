@@ -1,4 +1,4 @@
-﻿using TechTalk.SpecFlow;
+using TechTalk.SpecFlow;
 using Pages;
 
 [Binding]
@@ -14,7 +14,7 @@ public class LoginSteps
     [Given(@"que estou na página de login")]
     public async Task GivenQueEstouNaPaginaDeLogin()
     {
-        await _loginPage.Navigate();
+        await _loginPage.NavegarAsync();
     }
 
     [When(@"informo usuário '([^']*)' e senha '([^']*)'")]
