@@ -1,4 +1,4 @@
-﻿using Microsoft.Playwright;
+using Microsoft.Playwright;
 
 public class PlaywrightDriver
 {
@@ -9,9 +9,10 @@ public class PlaywrightDriver
     public async Task InitializeAsync()
     {
         _playwright = await Playwright.CreateAsync();
+        var headless = Automacao.Config.AppConfigManager.Settings.Headless;
 
         _browser = await _playwright.Chromium.LaunchAsync(
-            new BrowserTypeLaunchOptions { Headless = false });
+            new BrowserTypeLaunchOptions { Headless = headless });
 
         var context = await _browser.NewContextAsync();
         Page = await context.NewPageAsync();

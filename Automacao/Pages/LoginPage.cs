@@ -1,4 +1,4 @@
-﻿using Microsoft.Playwright;
+using Microsoft.Playwright;
 
 namespace Pages
 {
@@ -42,9 +42,8 @@ namespace Pages
         // =========================
         public async Task Navigate()
         {
-            await _page.GotoAsync(
-                "https://regular.escolarmanageronline.com.br/escolateste"
-            );
+            var baseUrl = Automacao.Config.AppConfigManager.Settings.BaseUrl;
+            await _page.GotoAsync(baseUrl);
         }
 
         public async Task RealizarLogin(string usuario, string senha)

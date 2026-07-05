@@ -1,4 +1,4 @@
-﻿using TechTalk.SpecFlow;
+using TechTalk.SpecFlow;
 using Automacao.Pages;
 using Pages;
 
@@ -28,7 +28,8 @@ namespace Automacao.StepDefinitions
         [Scope(Tag = "FichaDoAluno")]
         public async Task GivenAcessoOSistemaUtilizandoOperador(string nomeOperador)
         {
-            await _login.RealizarLogin(nomeOperador, "aaaaaaaaaaaaaaaaaaaaa");
+            var password = Automacao.Config.AppConfigManager.Settings.DefaultPassword;
+            await _login.RealizarLogin(nomeOperador, password);
             await _cadastroFichaAlunoPO.Navegue();
         }
 

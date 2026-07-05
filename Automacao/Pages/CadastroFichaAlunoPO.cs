@@ -1,10 +1,17 @@
-﻿using Microsoft.Playwright;
+using Microsoft.Playwright;
+using Automacao.Config;
 
 namespace Automacao.Pages
 {
     public class CadastroFichaAlunoPO
     {
         private readonly IPage _page;
+        
+        // LOCATORS
+        private ILocator BotaoCadastrar => _page.Locator("css=.botao-cadastrar");
+        private ILocator NomeCivilInput => _page.Locator("id=Nome");
+        private ILocator SexoSelect => _page.Locator("id=Sexo");
+
         public CadastroFichaAlunoPO(IPage page)
         {
             _page = page;
@@ -14,8 +21,9 @@ namespace Automacao.Pages
         {
             await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
+            var baseUrl = AppConfigManager.Settings.BaseUrl;
             await _page.GotoAsync(
-                "https://regular.escolarmanageronline.com.br/escolateste/CadastroFichaAluno",
+                $"{baseUrl}/CadastroFichaAluno",
                 new PageGotoOptions
                 {
                     WaitUntil = WaitUntilState.NetworkIdle
@@ -23,31 +31,21 @@ namespace Automacao.Pages
             );
         }
 
-
-        #region CLICO NO BOTAO
+        #region AÇÕES
         public async Task ClicoNoBotaoCadastrar()
         {
-            var botao = _page.Locator("css=.botao-cadastrar");
-            await botao.ClickAsync();
+            await BotaoCadastrar.ClickAsync();
         }
 
-        #endregion
-
-
-        #region INFORME
         public async Task InformeNomeCivil(string civil)
         {
-            var nomeCivilInput = _page.Locator("id=Nome");
-            await nomeCivilInput.FillAsync(civil);
+            await NomeCivilInput.FillAsync(civil);
         }   
 
         public async Task SelecioneSexo(string sexo)
         {
-            var sexoSelect = _page.Locator("id=Sexo");
-            await sexoSelect.SelectOptionAsync(new SelectOptionValue { Label = sexo });
+            await SexoSelect.SelectOptionAsync(new SelectOptionValue { Label = sexo });
         }
-
         #endregion
-
     }
 }

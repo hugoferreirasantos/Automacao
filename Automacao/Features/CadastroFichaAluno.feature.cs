@@ -100,7 +100,7 @@ namespace Automacao.Features
  testRunner.Given("que desejo cadastrar a ficha do aluno", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.And("acesso o sistema utilizando operador \'HUGO QA\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("acesso o sistema utilizando operador \'HUGO asfdfsadfsfdsf\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
  testRunner.And("clico em Cadastrar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
