@@ -6,7 +6,7 @@ namespace Pages
     public class LoginPage : BasePage
     {
         // Esta é a página inicial, então o caminho é vazio
-        protected override string PagePath => "";
+        protected override string PagePath => "Login";
 
         public LoginPage(IPage page) : base(page)
         {
@@ -20,14 +20,7 @@ namespace Pages
         // =========================
         // LOCATORS - LOGIN
         // =========================
-        private ILocator UsuarioInput =>
-            _page.Locator("#Usuarios");
-
-        private ILocator SenhaInput =>
-            _page.Locator("#SenhaAcesso");
-
-        private ILocator LoginButton =>
-            _page.GetByRole(AriaRole.Button, new() { Name = "Entrar" });
+        
 
         // =========================
         // LOCATORS - HOME (IFRAME)
@@ -45,13 +38,23 @@ namespace Pages
         {
             NomeUsuario = usuario;
 
-            await UsuarioInput.SelectOptionAsync(
-                new SelectOptionValue { Label = usuario }
-            );
+            // Abre o combo de usuários
+            await _page.Locator("#Usuarios-text").ClickAsync();
 
-            await SenhaInput.FillAsync(senha);
+            // Seleciona o usuário pelo texto
+            await _page
+                .Locator("#Usuarios-options .ns-login-select-option")
+                .Filter(new() { HasText = usuario })
+                .ClickAsync();
 
-            await LoginButton.ClickAsync();
+            // Preenche a senha
+            await _page.Locator("#SenhaAcesso").FillAsync(senha);
+
+            // Efetua o login
+            await _page.Locator("#btnEntrar").ClickAsync();
+
+            // Aguarda o redirecionamento após o login
+            await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
         }
 
         // =========================

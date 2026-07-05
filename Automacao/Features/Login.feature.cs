@@ -80,8 +80,8 @@ namespace Automacao.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login com sucesso", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 3
-  this.ScenarioInitialize(scenarioInfo);
+#line 4
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -90,13 +90,13 @@ namespace Automacao.Features
             else
             {
                 this.ScenarioStart();
-#line 4
+#line 5
     testRunner.Given("que estou na página de login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 5
-    testRunner.When("informo usuário \'HUGO QA\' e senha \'TeraByte@123\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 6
+    testRunner.When("informo usuário \'ADMINISTRADOR\' e senha \'1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 7
     testRunner.Then("devo ver a página inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

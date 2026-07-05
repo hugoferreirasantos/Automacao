@@ -87,7 +87,7 @@ namespace Automacao.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastrar ficha do aluno com informacoes obrigatorias", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
-  this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -100,7 +100,7 @@ namespace Automacao.Features
  testRunner.Given("que desejo cadastrar a ficha do aluno", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.And("acesso o sistema utilizando operador \'HUGO asfdfsadfsfdsf\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("acesso o sistema utilizando operador \'ADMINISTRADOR\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
  testRunner.And("clico em Cadastrar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

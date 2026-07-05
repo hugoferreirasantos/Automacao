@@ -3,9 +3,9 @@ Feature: Cadastrar Ficha do Aluno
 @Academico
 @FichaDoAluno
 @CadastrarFichaDoAluno
-  Scenario: Cadastrar ficha do aluno com informacoes obrigatorias
+Scenario: Cadastrar ficha do aluno com informacoes obrigatorias
 	Given que desejo cadastrar a ficha do aluno
-	And acesso o sistema utilizando operador 'HUGO asfdfsadfsfdsf'
+	And acesso o sistema utilizando operador 'ADMINISTRADOR'
 	And clico em Cadastrar
 	And informo o nome civil 'civil'
 	And seleciono o sexo 'Masculino'
